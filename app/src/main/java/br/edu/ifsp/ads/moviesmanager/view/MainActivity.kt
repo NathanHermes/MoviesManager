@@ -1,6 +1,7 @@
 package br.edu.ifsp.ads.moviesmanager.view
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.ContextMenu
 import android.view.Menu
@@ -9,6 +10,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import br.edu.ifsp.ads.moviesmanager.R
 import br.edu.ifsp.ads.moviesmanager.adapter.MovieAdapter
 import br.edu.ifsp.ads.moviesmanager.controller.MovieController
@@ -35,6 +37,41 @@ class MainActivity : BaseActivity() {
     with(amb) {
       movieController.findAllMovieOrderByName()
       moviesLv.adapter = movieAdapter
+
+      movieActivityResultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+          if (result.resultCode == RESULT_OK) {
+            val movie = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+              result.data?.getParcelableExtra(EXTRA_MOVIE, Movie::class.java)
+            } else {
+              result.data?.getParcelableExtra(EXTRA_MOVIE)
+            }
+
+            movie?.let { _movie ->
+              val position = movies.indexOfFirst { it.id == _movie.id }
+
+              if (position != -1) {
+                movies[position] = _movie
+                movieController.edit(_movie)
+                Toast.makeText(this@MainActivity, "Filme editado com sucesso", Toast.LENGTH_SHORT)
+                  .show()
+              } else {
+                movieController.save(_movie)
+                Toast.makeText(
+                  this@MainActivity,
+                  "Filme cadastrado com sucesso",
+                  Toast.LENGTH_SHORT
+                ).show()
+              }
+
+              movieAdapter.notifyDataSetChanged()
+            }
+          }
+        }
+
+      registerForContextMenu(moviesLv)
+
+
     }
   }
 
