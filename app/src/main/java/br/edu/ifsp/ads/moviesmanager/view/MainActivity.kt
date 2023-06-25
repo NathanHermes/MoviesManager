@@ -3,15 +3,15 @@ package br.edu.ifsp.ads.moviesmanager.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
-import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.ads.moviesmanager.R
 import br.edu.ifsp.ads.moviesmanager.adapter.MovieAdapter
 import br.edu.ifsp.ads.moviesmanager.controller.MovieController
 import br.edu.ifsp.ads.moviesmanager.databinding.ActivityMainBinding
 import br.edu.ifsp.ads.moviesmanager.model.Movie
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
   private val movies: MutableList<Movie> = mutableListOf()
   private lateinit var movieActivityResultLauncher: ActivityResultLauncher<Intent>
   private val amb: ActivityMainBinding by lazy {
@@ -37,6 +37,23 @@ class MainActivity : AppCompatActivity() {
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater.inflate(R.menu.menu_main, menu)
     return true
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    return when (item.itemId) {
+      R.id.addMovieMi -> {
+        val moviesList = ArrayList<Movie>(movies)
+        movieActivityResultLauncher.launch(
+          Intent(this, MovieActivity::class.java).putParcelableArrayListExtra(
+            EXTRA_MOVIES_LIST,
+            moviesList
+          )
+        )
+        true
+      }
+
+      else -> false
+    }
   }
 
   fun updateMovies(_movies: MutableList<Movie>) {
