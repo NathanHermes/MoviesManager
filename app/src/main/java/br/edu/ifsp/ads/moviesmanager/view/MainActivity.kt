@@ -2,8 +2,10 @@ package br.edu.ifsp.ads.moviesmanager.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import br.edu.ifsp.ads.moviesmanager.R
 import br.edu.ifsp.ads.moviesmanager.adapter.MovieAdapter
@@ -54,6 +56,14 @@ class MainActivity : BaseActivity() {
 
       else -> false
     }
+  }
+
+  override fun onCreateContextMenu(
+    menu: ContextMenu?,
+    v: View?,
+    menuInfo: ContextMenu.ContextMenuInfo?
+  ) {
+    menuInflater.inflate(R.menu.context_menu_main, menu)
   }
 
   fun updateMovies(_movies: MutableList<Movie>) {
