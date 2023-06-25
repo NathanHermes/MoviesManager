@@ -2,8 +2,10 @@ package br.edu.ifsp.ads.moviesmanager.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AppCompatActivity
+import br.edu.ifsp.ads.moviesmanager.R
 import br.edu.ifsp.ads.moviesmanager.adapter.MovieAdapter
 import br.edu.ifsp.ads.moviesmanager.controller.MovieController
 import br.edu.ifsp.ads.moviesmanager.databinding.ActivityMainBinding
@@ -30,6 +32,11 @@ class MainActivity : AppCompatActivity() {
       movieController.findAllMovieOrderByName()
       moviesLv.adapter = movieAdapter
     }
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    menuInflater.inflate(R.menu.menu_main, menu)
+    return true
   }
 
   fun updateMovies(_movies: MutableList<Movie>) {
