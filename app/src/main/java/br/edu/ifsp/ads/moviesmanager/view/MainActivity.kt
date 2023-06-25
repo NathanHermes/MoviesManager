@@ -25,9 +25,16 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(amb.root)
+
+    with(amb) {
+      movieController.findAllMovieOrderByName()
+      moviesLv.adapter = movieAdapter
+    }
   }
 
   fun updateMovies(_movies: MutableList<Movie>) {
-
+    movies.clear()
+    movies.addAll(_movies)
+    movieAdapter.notifyDataSetChanged()
   }
 }
