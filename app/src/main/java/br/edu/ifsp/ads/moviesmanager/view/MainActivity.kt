@@ -6,6 +6,8 @@ import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import br.edu.ifsp.ads.moviesmanager.R
 import br.edu.ifsp.ads.moviesmanager.adapter.MovieAdapter
@@ -45,12 +47,9 @@ class MainActivity : BaseActivity() {
     return when (item.itemId) {
       R.id.addMovieMi -> {
         val moviesList = ArrayList<Movie>(movies)
-        movieActivityResultLauncher.launch(
-          Intent(this, MovieActivity::class.java).putParcelableArrayListExtra(
-            EXTRA_MOVIES_LIST,
-            moviesList
-          )
-        )
+        val movieIntent = Intent(this, MovieActivity::class.java)
+        movieIntent.putParcelableArrayListExtra(EXTRA_MOVIES_LIST, moviesList)
+        movieActivityResultLauncher.launch(movieIntent)
         true
       }
 
@@ -64,6 +63,28 @@ class MainActivity : BaseActivity() {
     menuInfo: ContextMenu.ContextMenuInfo?
   ) {
     menuInflater.inflate(R.menu.context_menu_main, menu)
+  }
+
+  override fun onContextItemSelected(item: MenuItem): Boolean {
+    val position = (item.menuInfo as AdapterView.AdapterContextMenuInfo).position
+    return when (item.itemId) {
+      R.id.editMovieMi -> {
+        val movieList = ArrayList<Movie>(movies)
+        val movieIntent = Intent(this, MovieActivity::class.java)
+        movieIntent.putExtra(EXTRA_MOVIE, movies[position])
+        movieIntent.putParcelableArrayListExtra(EXTRA_MOVIES_LIST, movieList)
+        movieActivityResultLauncher.launch(movieIntent)
+        true
+      }
+
+      R.id.deleteMovieMi -> {
+        movieController.delete(movies[position])
+        Toast.makeText(this, "Filme deletado", Toast.LENGTH_SHORT).show()
+        true
+      }
+
+      else -> false
+    }
   }
 
   fun updateMovies(_movies: MutableList<Movie>) {
