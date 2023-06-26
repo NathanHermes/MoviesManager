@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="zinc50">#fafafa</color>
+    <color name="zinc300">#d4d4d8</color>
+    <color name="zinc500">#71717a</color>
+    <color name="zinc900">#18181b</color>
 
-    <color name="red_200">#fecaca</color>
-    <color name="red_600">#dc2626</color>
-    <color name="red_900">#7f1d1d</color>
+    <color name="violet50">#f5f3ff</color>
+    <color name="violet300">#c4b5fd</color>
+    <color name="violet500">#8b5cf6</color>
+    <color name="violet900">#4c1d95</color>
 
-    <color name="zinc_50">#fafafa</color>
-    <color name="zinc_100">#f4f4f5</color>
-    <color name="zinc_200">#e4e4e7</color>
-    <color name="zinc_300">#d4d4d8</color>
-    <color name="zinc_400">#a1a1aa</color>
-    <color name="zinc_500">#71717a</color>
-    <color name="zinc_600">#52525b</color>
-    <color name="zinc_700">#3f3f46</color>
-    <color name="zinc_800">#27272a</color>
-    <color name="zinc_900">#18181b</color>
+    <color name="blue50">#eff6ff</color>
+    <color name="blue300">#93c5fd</color>
+    <color name="blue500">#3b82f6</color>
+    <color name="blue900">#1e3a8a</color>
 </resources>
