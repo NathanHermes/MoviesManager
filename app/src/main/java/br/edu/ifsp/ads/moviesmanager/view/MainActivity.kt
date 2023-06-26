@@ -95,7 +95,14 @@ class MainActivity : BaseActivity() {
         movieActivityResultLauncher.launch(movieIntent)
         true
       }
-
+      R.id.orderByName -> {
+        movieController.findAllMovieOrderByName()
+        true
+      }
+      R.id.orderByReleaseYear -> {
+        movieController.findAllMoviesOrderByReleaseYear()
+        true
+      }
       else -> false
     }
   }
