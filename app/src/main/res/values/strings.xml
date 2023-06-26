@@ -15,6 +15,8 @@
     <string name="assessment_tv">Avaliação</string>
     <string name="back_bt">Voltar</string>
     <string name="save_bt">Salvar</string>
+    <string name="order_by_name_mi">Ordenar por nome</string>
+    <string name="order_by_release_year_mi">Ordenar por ano</string>
 
     <string-array name="genders">
         <item>Ação</item>
