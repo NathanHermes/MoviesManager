@@ -71,7 +71,13 @@ class MainActivity : BaseActivity() {
 
       registerForContextMenu(moviesLv)
 
-
+      moviesLv.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+        val movie = movies[position]
+        val movieIntent = Intent(this@MainActivity, MovieActivity::class.java)
+        movieIntent.putExtra(EXTRA_MOVIE, movie)
+        movieIntent.putExtra(EXTRA_VIEW_MOVIE, true)
+        movieActivityResultLauncher.launch(movieIntent)
+      }
     }
   }
 
