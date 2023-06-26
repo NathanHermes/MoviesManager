@@ -7,4 +7,11 @@
         android:orderInCategory="100"
         android:title="@string/menu_item_description"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/orderByName"
+        android:title="@string/order_by_name_mi"/>
+    <item
+        android:id="@+id/orderByReleaseYear"
+        android:title="@string/order_by_release_year_mi"/>
 </menu>
