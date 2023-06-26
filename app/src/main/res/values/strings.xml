@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">MoviesManager</string>
+    <string name="title_home_tv">Lista de Filmes</string>
+    <string name="subtitle_home_tv">Gerencie todos os filmes existentes ou adicione um novo filme.</string>
+    <string name="menu_item_description">Adicionar filme</string>
+    <string name="edit_movie_mi">Editar filme</string>
+    <string name="delete_movie_mi">Deletar filme</string>
+    <string name="title_movie_tv">Cadastrar filme</string>
+    <string name="name_tv">Nome*</string>
+    <string name="release_year_tv">Ano de lançamento*</string>
+    <string name="studio_tv">Estúdio/Produtora</string>
+    <string name="duration_tv">Duração (em minutos)</string>
+    <string name="watched_rb">Já assiti</string>
+    <string name="no_watch_rb">Não assiti</string>
+    <string name="assessment_tv">Avaliação</string>
+    <string name="back_bt">Voltar</string>
+    <string name="save_bt">Salvar</string>
+
+    <string-array name="genders">
+        <item>Ação</item>
+        <item>Aventura</item>
+        <item>Animação</item>
+        <item>Comédia</item>
+        <item>Crime</item>
+        <item>Documentário</item>
+        <item>Drama</item>
+        <item>Fantasia</item>
+        <item>Ficção científica</item>
+        <item>Horror/Terror</item>
+        <item>Musical</item>
+        <item>Romance</item>
+        <item>Suspense</item>
+        <item>Western</item>
+        <item>Guerra</item>
+        <item>Histórico</item>
+        <item>Biográfico</item>
+        <item>Família</item>
+        <item>Esporte</item>
+        <item>Mistério</item>
+    </string-array>
 </resources>
