@@ -15,5 +15,5 @@ data class Movie(
   var duration: Int,
   var watched: Boolean,
   var assessment: Int,
-  var gender: String
+  var gender: Int
 ) : Parcelable
